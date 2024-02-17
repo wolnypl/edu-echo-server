@@ -10,10 +10,10 @@ RUN yum -y update; yum -y install vim iproute httpd python3-mod_wsgi; yum clean 
 ENTRYPOINT ["/entrypoint.sh"]
 
 
-LABEL version="1.0"
+LABEL version="3.0"
 LABEL org.opencontainers.image.authors="Peter_F"
 EXPOSE 80/tcp
-ENV WERSJA="1.0"
+ENV WERSJA="3.0"
 ENV DYSTRYBUCJA rockylinux
 
 VOLUME /dane
@@ -26,6 +26,7 @@ RUN mkdir $WERSJAOS
 USER root
 ADD entrypoint.sh /
 COPY hello.py /var/www/wsgi/hello.py
+COPY Dockerfile /
 #RUN echo "WSGIScriptAlias /hello /var/www/wsgi/hello.py" >/etc/httpd/conf.d/hello.conf
 RUN echo "WSGIScriptAlias / /var/www/wsgi/hello.py" >/etc/httpd/conf.d/hello.conf
 
