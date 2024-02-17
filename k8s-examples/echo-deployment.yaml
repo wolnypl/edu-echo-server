@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu-echo-server-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: edu-echo-server
+  template:
+    metadata:
+      labels:
+        app: edu-echo-server
+    spec:
+      containers:
+      - name: edu-echo-server
+        image: docker.io/wolnypl/edu-echo-server:1.0
+        env:
+        - name: BACKEND
+          value: "mysql-service"  
+        ports:
+        - containerPort: 80
+
