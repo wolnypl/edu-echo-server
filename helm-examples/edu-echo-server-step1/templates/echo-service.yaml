@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.eduEchoServer.appName }}-{{ .Values.instanceId }}-deployment
+spec:
+  replicas: {{ .Values.eduEchoServer.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.eduEchoServer.appName }}
+      instance: {{ .Values.instanceId }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.eduEchoServer.appName }}
+        instance: {{ .Values.instanceId }}
+    spec:
+      containers:
+      - name: {{ .Values.eduEchoServer.containerName }}
+        image: {{ .Values.eduEchoServer.image }}
+        env:
+        - name: BACKEND
+          value: {{ .Values.mysql.serviceName }}
+        ports:
+        - containerPort: {{ .Values.eduEchoServer.port }}
+

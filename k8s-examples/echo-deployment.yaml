@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: edu-echo-server
-        image: docker.io/wolnypl/edu-echo-server:1.0
+        image: docker.io/wolnypl/edu-echo-server:3.1
         env:
         - name: BACKEND
           value: "mysql-service"  

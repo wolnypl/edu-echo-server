@@ -10,10 +10,10 @@ RUN yum -y update; yum -y install vim iproute httpd python3-mod_wsgi; yum clean 
 ENTRYPOINT ["/entrypoint.sh"]
 
 
-LABEL version="3.0"
+LABEL version="3.1"
 LABEL org.opencontainers.image.authors="Peter_F"
 EXPOSE 80/tcp
-ENV WERSJA="3.0"
+ENV WERSJA="3.1"
 ENV DYSTRYBUCJA rockylinux
 
 VOLUME /dane

@@ -1,0 +1,19 @@
+instanceId: instance1
+
+eduEchoServer:
+  appName: edu-echo-server
+  containerName: edu-echo-server-container
+  image: docker.io/wolnypl/edu-echo-server:1.0
+  replicas: 2
+  port: 80
+
+mysql:
+  name: mysql
+  image: mysql:5.7
+  rootPassword: examplepassword
+  port: 3306
+  pvcName: mysql-pvc
+  storage: 1Gi
+  storageClassName: openebs-hostpath
+  serviceName: mysql-service
+
